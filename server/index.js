@@ -33,6 +33,8 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Middlewares
+app.use(express.static("public"));
+
 app.use(logger);
 app.use(cors());
 app.use(cookieParser());
@@ -43,6 +45,11 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
+
+// Render the index.html file for the root route ("/")
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "server" + "/public" });
+});
 
 // Error Handling Middlewares
 app.use((err, req, res, next) => {
