@@ -36,7 +36,14 @@ mongoose.connection.on("disconnected", () => {
 app.use(express.static("public"));
 
 app.use(logger);
-app.use(cors());
+app.use(cors(
+  {
+    origin: [
+      "http:''localhost:3000",
+      "https://mern-karan-booking-app.onrender.com",
+    ],
+  }
+));
 app.use(cookieParser());
 app.use(express.json());
 
