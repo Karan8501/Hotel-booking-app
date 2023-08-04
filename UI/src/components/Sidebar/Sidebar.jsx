@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./sidebar.css";
 import axios from "axios";
+
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const Sidebar = ({ setShowSideBar }) => {
 
     const handleClick = async () => {
         try {
-            const res = await axios.post("/auth/logout");
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`);
 
             if (res.data.loggedOut) {
                 localStorage.removeItem("user");

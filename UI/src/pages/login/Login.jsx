@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+
 import ResponsStatus from "../../components/ResponseStatus/ResponsStatus";
 import "./login.css";
 
@@ -23,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("https://hotel-booking-app-seven.vercel.app/api/auth/login", credentials);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, credentials);
       console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
