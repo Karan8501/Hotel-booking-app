@@ -41,7 +41,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://mern-karan-booking-app.onrender.com",
-      "https://mern-chirag-booking-app.onrender.com",
+      "https://gautamhotelbooking.onrender.com",
       "https://hotel_booking_App.onrender.com",
     ],
   })
